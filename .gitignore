@@ -1,0 +1,9 @@
+*~
+
+# Catkin custom files
+CATKIN_IGNORE
+
+*.pyc
+
+catkin_ws/build/*
+ws_livox/build/*
