@@ -2,8 +2,11 @@
 
 # Catkin custom files
 CATKIN_IGNORE
+*.catkin_workspace
 
 *.pyc
 
 catkin_ws/build/*
+catkin_ws/devel/*
 ws_livox/build/*
+ws_livox/devel/*
