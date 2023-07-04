@@ -1,4 +1,4 @@
-# CHANGE LOG
+# INSTALLATION GUIDE
 
 This document is for recording the actions done to integrate all the required systems (Husky, Outster LiDAR, FAST-LIO 2.0, AEDE, and TARE Planner) together on **ROS Noetic**.
 > 📘 All packages should be added to the `catkin_ws/src` directory
@@ -36,7 +36,7 @@ catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release
 - First run `source devel/setup.bash` (ensure that the it's the devel in the catkin_ws directory)
 - LiDAR must be connected then run:
     ```
-    roslaunch ouster_ros sensor.launch 
+    roslaunch ouster_ros sensor.launch  \
     sensor_hostname:=os1-122011000244.local
     metadata:=<json file name>          #<path to rosbag file>  optional
     ```
@@ -81,3 +81,10 @@ catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release
         catkin_make
         ```
     - Else, running `source devel/setup.bash` in our catkin workspace, followed by `catkin_make` will automatically build the required files accordingly too so the previous step will be unnecessary.
+
+### Running
+
+```
+source devel/setup.bash
+roslaunch fast_lio mapping_ouster64.launch
+```
