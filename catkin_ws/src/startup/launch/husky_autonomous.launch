@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!-- To start up Husky: control.launch and teleop.launch will be called by this base.launch -->
+    <include file="$(find husky_base)/launch/base.launch" />
+
+    <!-- Lidar (ouster) -->
+    <arg name="sensor_hostname" default="os1-122011000244.local" />
+    <include file="$(find ouster_ros)/launch/sensor.launch">
+        <arg name="sensor_hostname" value="$(arg sensor_hostname)" />
+    </include>
+
+
+    <!-- for compatibility with < 1.13 rosbags -->
+    <!-- <node pkg="topic_tools" name="relay_lidar" type="relay" args="/os1_node/lidar_packets /os_node/lidar_packets" />
+    <node pkg="topic_tools" name="relay_imu" type="relay" args="/os1_node/imu_packets /os_node/imu_packets" /> -->
+
+
+    <!-- FAST_LIO -->
+    <include file="$(find FAST_LIO)/launch/mapping_ouster64.launch" />
+
+
+    <!-- AEDE (system_real_robot) -->
+    <include file="$(find aede)/src/vehicle_simulator/launch/system_real_robot.launch" />
+
+
+    <!-- static transforms -->
+    <node pkg="tf" type="static_transform_publisher" name="cameraInitPublisher" args="0 0 0 0 0 0 map camera_init 100" />
+    <!-- <node pkg="tf" type="static_transform_publisher" name="osSensorPublisher" args="0 0 0 0 0 0 sensor os_sensor 100" /> -->
+    
+
+    <!-- Remap to Ghost topic and remove stamp -->
+    <node pkg="twist_unstamp" type="twist_unstamp_node" name="twist_unstamp_node">
+        <param name="inputTopic" type="string" value="/aede/cmd_vel" />
+        <param name="outputTopic" type="string" value="/cmd_vel" />
+    </node>
+
+
+</launch>

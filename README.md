@@ -54,7 +54,7 @@ catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release
 ### Installations:
 
 1.  `sudo apt install libpcl-dev` (this is for Point Cloud Library)
-2.  `sudo apt uninstall libeigen3-dev`
+2.  `sudo apt install libeigen3-dev`
     - Alternatively, download tar.gz file from [Eigen source](https://eigen.tuxfamily.org/index.php?title=Main_Page) 
     - Untar using `tar -xzf <tarfile name>`
     - See instructions in `INSTALL.txt` in the untarred folder

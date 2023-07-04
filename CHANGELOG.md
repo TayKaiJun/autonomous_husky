@@ -17,6 +17,7 @@
 
 ### 04/07/23
 
+#### Husky packages
 Comparing husky_nav/husky_base.launch (on the NUC) & husky_base/base.launch (mine)
 - port needs to be set to `/dev/ttyUSB0`
 - control_frequency is different 20 for NUC and 10 for original code, but no change was made
@@ -30,3 +31,19 @@ Comparing husky_nav/teleop.launch (on the NUC) & husky_control/teleop.launch (mi
 
 Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & husky_control/config/teleop_logitech.yaml (mine)
 - joy_nonde needs to be set to `dev: /dev/input/js0`
+
+#### AEDE package
+
+- the correct topic name should be updated in the loam_interface.launch, otherwise do the following:
+    - remapped `/odometry/filtered` to `/state_estimation` in `FAST_LIO/launch/mapping_ouster64.launch`
+    - remapped `/cloud_registered` to `/registered_scan` in `husky_control/launch/control.launch`
+- TO-DO: Adjust 'minRelZ' and 'maxRelZ' in 'aede/src/local_planner/launch/local_planner.launch'. (The default sensor height is set at 0.75m above the ground in the vehicle simulator and the registered scans are cropped at the height of -0.5m and 0.25m w.r.t. the sensor.)
+
+
+### MAJOR CHANGE
+- **(referenced from `sv_nuc/launch/sv.launch`)** added a new startup folder with a husky_autonomous.launch and twist_unstamp.cpp
+    - startup.launch used to call all the launch files required
+        - note `<node pkg="tf" type="static_transform_publisher" name="cameraInitPublisher" args="0 0 0 0 0 0 map camera_init 100" />` to `FAST_LIO/launch/mapping_ouster64.launch` to transform fast_lio's camera_init frame to the map to be used by the husky's localization.yaml
+    - twist_unstamp.cpp is to remove the header from the `geometry_msgs::TwistStamped` to `geometry_msgs::Twist`
+- **(TO BE VERIFIED)** added `map_frame: map` to `husky_control/config/localization.yaml`
+- in `aede/src/local_planner/src/pathFollower.cpp`, cmd_vel is published as aede/cmd_vel instead so that husky does not attempt to use the output TwistStamped cmd_vel from AEDE and have mismatch in message type
