@@ -38,6 +38,7 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
     - remapped `/odometry/filtered` to `/state_estimation` in `FAST_LIO/launch/mapping_ouster64.launch`
     - remapped `/cloud_registered` to `/registered_scan` in `husky_control/launch/control.launch`
 - TO-DO: Adjust 'minRelZ' and 'maxRelZ' in 'aede/src/local_planner/launch/local_planner.launch'. (The default sensor height is set at 0.75m above the ground in the vehicle simulator and the registered scans are cropped at the height of -0.5m and 0.25m w.r.t. the sensor.)
+- commented out loading of ps3.launch in the system_real_robot.launch file
 
 
 ### MAJOR CHANGE
