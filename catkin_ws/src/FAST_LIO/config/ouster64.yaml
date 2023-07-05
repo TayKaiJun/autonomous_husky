@@ -9,7 +9,7 @@ preprocess:
     lidar_type: 3                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
     scan_line: 64
     timestamp_unit: 3                 # 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
-    blind: 4
+    blind: 1.2                  # set blind distance to 1.2m so that the Husky will not be treated as an obstacle (TODO: Tune this value)
 
 mapping:
     acc_cov: 0.1

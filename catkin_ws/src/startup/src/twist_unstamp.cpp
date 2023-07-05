@@ -20,8 +20,8 @@ int main(int argc, char** argv){
     ros::NodeHandle nh;
     ros::NodeHandle nhPrivate = ros::NodeHandle("~");
 
-    nhPrivate.param<std::string>("input_topic", input_topic, "/cmd_vel_throttled");
-    nhPrivate.param<std::string>("output_topic", output_topic, "/mcu/command/manual_twist");
+    nhPrivate.param<std::string>("input_topic", input_topic, "/aede/cmd_vel");
+    nhPrivate.param<std::string>("output_topic", output_topic, "/cmd_vel");
 
     ros::Subscriber cmdVelSub = nh.subscribe(input_topic, 5, modifierCallback);
 

@@ -9,6 +9,7 @@
     <arg name="sensor_hostname" default="os1-122011000244.local" />
     <include file="$(find ouster_ros)/launch/sensor.launch">
         <arg name="sensor_hostname" value="$(arg sensor_hostname)" />
+        <arg name="viz" value="false" />
     </include>
 
 
@@ -18,11 +19,13 @@
 
 
     <!-- FAST_LIO -->
-    <include file="$(find FAST_LIO)/launch/mapping_ouster64.launch" />
+    <include file="$(find fast_lio)/launch/mapping_ouster64.launch">
+        <arg name="rviz" value="false" />
+    </include>
 
 
     <!-- AEDE (system_real_robot) -->
-    <include file="$(find aede)/src/vehicle_simulator/launch/system_real_robot.launch" />
+    <include file="$(find vehicle_simulator)/launch/system_real_robot.launch" />
 
 
     <!-- static transforms -->
@@ -31,7 +34,7 @@
     
 
     <!-- Remap to Ghost topic and remove stamp -->
-    <node pkg="twist_unstamp" type="twist_unstamp_node" name="twist_unstamp_node">
+    <node pkg="startup" type="twist_unstamp" name="twist_unstamp_node">
         <param name="inputTopic" type="string" value="/aede/cmd_vel" />
         <param name="outputTopic" type="string" value="/cmd_vel" />
     </node>

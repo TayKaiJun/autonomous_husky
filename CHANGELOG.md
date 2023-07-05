@@ -48,3 +48,12 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
     - twist_unstamp.cpp is to remove the header from the `geometry_msgs::TwistStamped` to `geometry_msgs::Twist`
 - **(TO BE VERIFIED)** added `map_frame: map` to `husky_control/config/localization.yaml`
 - in `aede/src/local_planner/src/pathFollower.cpp`, cmd_vel is published as aede/cmd_vel instead so that husky does not attempt to use the output TwistStamped cmd_vel from AEDE and have mismatch in message type
+
+### 05/07/23
+
+- changed `ouster64.yaml` blind parameter to 1.2 so that husky will so that the Husky will not be treated as an obstacle (TODO: Tune this value)
+- made `startup` package to run everything from one launch file
+    - `twist_unstamp` node made to extract the Twist typed message from the output of AEDE in order to control the Husky
+- stop rviz launch from ouster-ros and fastlio: see `husky_autonomous.launch`
+    - for ouster, `<arg name="viz" value="false" />`
+    - for fast-lio, `<arg name="rviz" value="false" />`
