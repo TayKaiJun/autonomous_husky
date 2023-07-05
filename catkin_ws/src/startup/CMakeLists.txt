@@ -20,5 +20,5 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(startup_node src/twist_unstamp.cpp)
-target_link_libraries(startup_node ${catkin_LIBRARIES})
+add_executable(twist_unstamp src/twist_unstamp.cpp)
+target_link_libraries(twist_unstamp ${catkin_LIBRARIES})

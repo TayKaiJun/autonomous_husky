@@ -57,3 +57,4 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
 - stop rviz launch from ouster-ros and fastlio: see `husky_autonomous.launch`
     - for ouster, `<arg name="viz" value="false" />`
     - for fast-lio, `<arg name="rviz" value="false" />`
+- fixed inconsistent naming of twist_unstamp node

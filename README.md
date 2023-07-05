@@ -3,7 +3,9 @@
 This document is for recording the actions done to integrate all the required systems (Husky, Outster LiDAR, FAST-LIO 2.0, AEDE, and TARE Planner) together on **ROS Noetic**.
 > 📘 All packages should be added to the `catkin_ws/src` directory
 
-## Husky
+
+1.1 Husky
+=========
 
 Source code: https://github.com/husky/husky/tree/noetic-devel
 
@@ -20,7 +22,9 @@ Source code: https://github.com/husky/husky/tree/noetic-devel
 
 *Bolded packages are the important ones used for operating the robot (TBV)*
 
-## Ouster Integration
+
+1.2 Ouster
+======================
 
 ### Installations:
 
@@ -49,7 +53,8 @@ catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release
 - to see the topics being published, open another terminal, source the same bash file then run `rostopic list`
 
 
-## Fast-LIO Integration
+1.3 Fast-LIO2.0
+===============
 
 ### Installations:
 
@@ -88,3 +93,47 @@ catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release
 source devel/setup.bash
 roslaunch fast_lio mapping_ouster64.launch
 ```
+
+
+1.4 Autonomous Exploration Development Environment (AEDE)
+=========================================================
+
+Clone source code: 
+```
+git clone https://github.com/HongbiaoZ/autonomous_exploration_development_environment.git
+git checkout distribution
+catkin_make
+```
+Change topic names in loam_interface.launch to match the topic names published by the Husky's Odometry data and Fast-LIO's PointCloud data:
+- remapped `/odometry/filtered` to `/state_estimation` in `FAST_LIO/launch/mapping_ouster64.launch`
+- remapped `/cloud_registered` to `/registered_scan` in `husky_control/launch/control.launch`
+
+### Running
+When running on the Husky
+```
+source devel/setup.sh
+roslaunch vehicle_simulator system_real_robot.launch
+```
+
+2 Integrated Launcher
+=====================
+
+- Run `catkin_create_pkg startup roscpp` to make a new startup package
+- In the `/launch` folder, add `autonomous_husky_startup.launch`
+    - This launch file will call all the other launch files required, namely: `husky_base` (which also calls husky_control and husky_teleop internally), ouster-ros's `sensor.launch`, fast-lio's `mapping_ouster64.launch`, AEDE's `system_real_robot.launch`
+- In the `/src` folder, add `twist_unstamp.cpp`
+    - This is to extract the Twist data and publish it to the /cmd_vel topic to be used for controlling the husky
+
+3 Operating the Autonomous Husky
+================================
+
+```
+cd ~/$PROJECT_PATH/catkin_ws
+source /opt/ros/noetic/setup.bash 
+run catkin_make
+
+source devel/setup.bash
+roslaunch startup autonomous_husky_startup.launch
+```
+After running the above code, all the nodes needed should be launched and there will be an RVIZ window showing the AEDE screen where you can select a waypoint for the robot to navigate towards.
+- Note: Since `/cmd_vel` has a lower priority than the `joy_teleop/cmd_vel` input from the controller, simply pressing the left bumper on the controller when AEDE is manoeuvring the robot will override the AEDE's control
