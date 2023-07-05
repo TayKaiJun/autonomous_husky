@@ -58,3 +58,11 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
     - for ouster, `<arg name="viz" value="false" />`
     - for fast-lio, `<arg name="rviz" value="false" />`
 - fixed inconsistent naming of twist_unstamp node
+
+
+**ADDED TARE PLANNER**
+- added `husky.yaml`
+    - copy of the `garage.yaml` file but `kAutoStart` set to false instead
+        - TO-DO: Must find out where to set this autostart value to be true later
+- added `explore_husky.launch` 
+    - set `scenario` arg to be `husky` so that the tare_planner_node will be loaded with the `husky.yaml` correctly

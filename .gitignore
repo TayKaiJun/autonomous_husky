@@ -3,11 +3,9 @@
 # Catkin custom files
 CATKIN_IGNORE
 *.catkin_workspace
-*.pcd
 *.pyc
 
 catkin_ws/build/*
 catkin_ws/devel/*
 ws_livox/build/*
 ws_livox/devel/*
-catkin_ws/src/FAST_LIO/Log/mat_pre.txt
