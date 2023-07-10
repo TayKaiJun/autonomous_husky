@@ -26,6 +26,8 @@
 
     <!-- AEDE (system_real_robot) -->
     <include file="$(find vehicle_simulator)/launch/system_real_robot.launch" />
+        <arg name="rviz" value="false" />
+    </include>
 
 
     <!-- static transforms -->
