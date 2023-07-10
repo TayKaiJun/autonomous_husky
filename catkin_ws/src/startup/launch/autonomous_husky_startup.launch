@@ -25,7 +25,7 @@
 
 
     <!-- AEDE (system_real_robot) -->
-    <include file="$(find vehicle_simulator)/launch/system_real_robot.launch" />
+    <include file="$(find vehicle_simulator)/launch/system_real_robot.launch">
         <arg name="rviz" value="false" />
     </include>
 
@@ -41,5 +41,10 @@
         <param name="outputTopic" type="string" value="/cmd_vel" />
     </node>
 
+    <!-- TARE launcher -->
+    <arg name="run_tare" default="false" doc="arg to decide whether to launch TARE or not"/>
+    <group if="$(arg run_tare)">
+        <include file="$(find tare_planner)/launch/explore_husky.launch" />
+    </group>
 
 </launch>
