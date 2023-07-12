@@ -66,3 +66,26 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
         - TO-DO: Must find out where to set this autostart value to be true later
 - added `explore_husky.launch` 
     - set `scenario` arg to be `husky` so that the tare_planner_node will be loaded with the `husky.yaml` correctly
+
+
+### 10/07/23
+- tested setup in open space
+    - discovered that error is due to odometry in the visualizer is drifting from the actual robot position
+    - might have problem with time synchronization, solution is to use ptp (adapted from SV_NUC):
+        ```
+        sudo apt install linuxptp
+        sudo nano /lib/systemd/system/ptp4l.service # change 'eth0' to whatever ethernet port the lidar will be connected to (?)
+        sudo systemctl start ptp4l.service 
+
+        # if the above line did not work, try
+        sudo systemctl try-restart-or-reload ptp4l.service
+
+        # to check if ptp is working
+        systemctl is-active ptp4l.service
+        ```
+        - for checking if a port is suitable for changing the config file for (ref: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ptp_using_ptp4l)
+            ```
+            sudo apt-get install ethtool
+            ethtool -T <PORT NAME>
+            ```
+### 12/07/23
