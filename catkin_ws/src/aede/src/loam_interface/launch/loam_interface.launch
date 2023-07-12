@@ -1,7 +1,7 @@
 <launch>
 
   <node pkg="loam_interface" type="loamInterface" name="loamInterface" output="screen" required="true">
-    <param name="stateEstimationTopic" type="string" value="/odometry/filtered" />
+    <param name="stateEstimationTopic" type="string" value="/Odometry" />
     <param name="registeredScanTopic" type="string" value="/cloud_registered" />
     <param name="flipStateEstimation" type="bool" value="false" />
     <param name="flipRegisteredScan" type="bool" value="false" />
