@@ -1,9 +1,7 @@
 #!/bin/bash
-cd catkin_ws
-source devel/setup.bash
 
 # SET UP ROS_IP
-console_ip=$(ifconfig | grep -A 1 'wl' | tail -1 | cut -d ':' -f 2 | grep -oP 'inet \K[\d.]+')
+console_ip=$(ifconfig | grep -A 1 'wl' | grep -oP 'inet \K[\d.]+')
 export ROS_IP="$console_ip"
 echo "ROS_IP set to: $ROS_IP"
 

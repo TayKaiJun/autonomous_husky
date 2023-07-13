@@ -95,3 +95,16 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
 - AEDE and TARE will be ran on the NUC while their visualization will be done on the remote PC.
 
 ### 13/07/23
+- added bash_aliases.txt to note down aliases to be added to ~/.bashrc for shortcuts to commands
+- added scripts to load NUC and computer quickly
+    - `setup_NUC.sh` will find its own IP, set ROS_IP, start ptp4l.service
+    - `setup_this.sh` will take in 1 argument, the IP address of the NUC, and use it to set ROS_MASTER_URI. it also finds its own IP and set ROS_IP
+- added `preflight.py` to check for LiDAR connection, PTP4L status, and time synchronization between NUC and LiDAR.
+
+- increased max_velocity of husky in control.yaml to 1.5
+- tuning of parameters for AEDE in local_planner.launch:
+    - decreased maxSpeed to 1.5
+    - set sensorOffsetX to -0.15
+    - lowered groundHeightThre to 0.05
+    - set vehicleLength to 0.99
+    - set vehicleWidth to 0.67
