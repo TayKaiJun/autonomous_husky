@@ -3,16 +3,27 @@
 source devel/setup.bash
 
 # SET UP ROS_IP
-console_ip=$(hostname -I | awk '{print $1}')
+console_ip=$(hostname -I | awk '!/^169/ {print $1}')
 export ROS_IP="$console_ip"
-# echo "ROS_IP set to: $ROS_IP"
+echo "ROS_IP set to: $ROS_IP"
 
-# Check if the ptp4l.service is inactive
-if ! systemctl is-active --quiet ptp4l.service; then
-  echo "ptp4l.service is inactive"
+##################################################
+##### Check if the ptp4l.service is inactive #####
+##################################################
+
+max_attempts=3
+attempt=0
+
+while ! systemctl is-active --quiet ptp4l.service && ((attempt < max_attempts)); do
+  attempt=$((attempt + 1))
+  echo "Attempt $attempt to start ptp4l.service"
   systemctl try-reload-or-restart ptp4l.service
   systemctl start ptp4l.service
-else
-  echo "ptp4l.service is active"
-fi
+  sleep 10
+done
 
+if systemctl is-active --quiet ptp4l.service; then
+  echo "ptp4l.service is active"
+else
+  echo "Failed to start ptp4l.service after $max_attempts attempts"
+fi
