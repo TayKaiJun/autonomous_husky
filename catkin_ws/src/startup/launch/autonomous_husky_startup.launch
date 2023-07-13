@@ -2,16 +2,15 @@
 
 <launch>
 
+    <rosparam command="load" file="$(find startup)/config/config.yaml" />
+    <arg name="sensor_hostname" default="os1-122011000244.local" />
+    <arg name="rviz" default="false" />
+
     <!-- To start up Husky: control.launch and teleop.launch will be called by this base.launch -->
     <include file="$(find husky_base)/launch/base.launch" />
 
     <!-- Lidar (ouster) -->
-    <arg name="sensor_hostname" default="os1-122011000244.local" />
-    <include file="$(find ouster_ros)/launch/sensor.launch">
-        <arg name="sensor_hostname" value="$(arg sensor_hostname)" />
-        <arg name="viz" value="false" />
-    </include>
-
+    <include file="$(find ouster_ros)/launch/sensor.launch"/>
 
     <!-- for compatibility with < 1.13 rosbags -->
     <!-- <node pkg="topic_tools" name="relay_lidar" type="relay" args="/os1_node/lidar_packets /os_node/lidar_packets" />
@@ -19,15 +18,11 @@
 
 
     <!-- FAST_LIO -->
-    <include file="$(find fast_lio)/launch/mapping_ouster64.launch">
-        <arg name="rviz" value="false" />
-    </include>
+    <include file="$(find fast_lio)/launch/mapping_ouster64.launch"/>
 
 
     <!-- AEDE (system_real_robot) -->
-    <include file="$(find vehicle_simulator)/launch/system_real_robot.launch">
-        <arg name="rviz" value="false" />
-    </include>
+    <include file="$(find vehicle_simulator)/launch/system_real_robot.launch"/>
 
 
     <!-- static transforms -->
@@ -42,8 +37,6 @@
     </node>
 
     <!-- TARE launcher -->
-    <include file="$(find tare_planner)/launch/explore_husky.launch">
-        <arg name="rviz" value="false" />
-    </include>
-
+    <include file="$(find tare_planner)/launch/explore_husky.launch"/>
+    
 </launch>
