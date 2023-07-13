@@ -1,3 +1,0 @@
-<launch>
-    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGAremote" args="-d $(find vehicle_simulator)/rviz/vehicle_simulator.rviz" respawn="false"/>
-</launch>

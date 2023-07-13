@@ -42,9 +42,8 @@
     </node>
 
     <!-- TARE launcher -->
-    <arg name="run_tare" default="false" doc="arg to decide whether to launch TARE or not"/>
-    <group if="$(arg run_tare)">
-        <include file="$(find tare_planner)/launch/explore_husky.launch" />
-    </group>
+    <include file="$(find tare_planner)/launch/explore_husky.launch">
+        <arg name="rviz" value="false" />
+    </include>
 
 </launch>

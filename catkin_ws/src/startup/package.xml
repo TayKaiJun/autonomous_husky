@@ -54,6 +54,7 @@
   <depend>aede</depend>
   <depend>FAST-LIO</depend>
   <depend>husky-noetic-devel</depend>
+  <depend>tare-noetic</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
