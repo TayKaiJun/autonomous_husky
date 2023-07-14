@@ -108,3 +108,11 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
     - lowered groundHeightThre to 0.05
     - set vehicleLength to 0.99
     - set vehicleWidth to 0.67
+
+### 14/07/23
+
+- params:
+    - lowered autonomySpeed to 1.5
+    - changed back groundHeightThre to 0.1
+    - changed back obstacleHeightThre to 0.15
+- changed blind radius to 0.8 -> blind radius of lidar is 0.8m due to hardware limitation. even with the lidar moved to the center of the robot, blind radius of lidar will already cover the husky
