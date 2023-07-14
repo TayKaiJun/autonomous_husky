@@ -116,3 +116,4 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
     - changed back groundHeightThre to 0.1
     - changed back obstacleHeightThre to 0.15
 - changed blind radius to 0.8 -> blind radius of lidar is 0.8m due to hardware limitation. even with the lidar moved to the center of the robot, blind radius of lidar will already cover the husky
+- in fast-lio's preprocess.h, changed  `uint8_t` to `uint16_t` for ouster's point ring field to fix `Failed to match field 'ring'` message when running fastlio package

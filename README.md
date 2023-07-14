@@ -127,13 +127,46 @@ roslaunch vehicle_simulator system_real_robot.launch
 3 Operating the Autonomous Husky
 ================================
 
-```
-cd ~/$PROJECT_PATH/catkin_ws
-source /opt/ros/noetic/setup.bash 
-run catkin_make
+### Semi-automated setup for deployment
+1. One time setup (refer to `bash_aliases.txt`)
+    - Add aliases to ~/.bashrc in PC:
+    ```
+    alias cd_pc='cd ~/Documents/autonomous_husky/catkin_ws'
+    alias source_husky_pc='source ~/Documents/autonomous_husky/catkin_ws/devel/setup.bash'
+    ```
+    - Add aliases to ~/.bashrc in NUC:
+    ```
+    alias cd_nuc='cd ~/kaijuntay/autonomous_husky/catkin_ws'
+    alias source_husky_nuc='source ~/kaijuntay/autonomous_husky/catkin_ws/devel/setup.bash'
+    ```
+    - `source ~/.bashrc` in either console to use the alias commands for easier life when testing
 
-source devel/setup.bash
-roslaunch startup autonomous_husky_startup.launch
-```
-After running the above code, all the nodes needed should be launched and there will be an RVIZ window showing the AEDE screen where you can select a waypoint for the robot to navigate towards.
-- Note: Since `/cmd_vel` has a lower priority than the `joy_teleop/cmd_vel` input from the controller, simply pressing the left bumper on the controller when AEDE is manoeuvring the robot will override the AEDE's control
+2. On the NUC:
+    ```
+    source setup_nuc.sh
+    python3 preflight.py
+    cd catkin_ws
+    source devel/setup.bash   #or source_husky_nuc
+    ```
+    After running the above, preflight should show all tests passed and also display the IP address of the NUC to be used in the next step.
+
+3. On the PC:
+    ```
+    source setup_this.sh <NUC_IP> # this sets up the ROS_IP and ROS_MASTER_URI
+    cd catkin_ws
+    source devel/setup.bash
+    ```
+4. To run everything:
+    - In the **ssh** terminal:
+        ```
+        roslaunch startup autonomous_husky_startup.launch
+        ```
+        All the nodes needed should be launched
+        
+        > Note that either the e_stop should be activated or the bumper of the controller should be held on to otherwise robot will start moving automatically.
+    - In the main PC:
+        ```
+        roslaunch startup visualize_aede.launch
+        roslaunch startup visualize_tare.launch
+        ```
+> Note: Since `/cmd_vel` has a lower priority than the `joy_teleop/cmd_vel` input from the controller, simply pressing the left bumper on the controller when AEDE is manoeuvring the robot will override the AEDE's control
