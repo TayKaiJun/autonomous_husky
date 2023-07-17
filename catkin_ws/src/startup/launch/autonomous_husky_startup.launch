@@ -27,6 +27,12 @@
     <!-- AEDE (system_real_robot) -->
     <include file="$(find vehicle_simulator)/launch/system_real_robot.launch">
         <arg name="rviz" value="false" />
+        <arg name="maxSpeed" value="1.0" />
+        <arg name="autonomySpeed" value="1.0" />
+        <arg name="sensorOffsetX" value="-0.15" />
+        <arg name="vehicleLength" value="0.99" />
+        <arg name="vehicleWidth" value="0.67" />
+        <arg name="lookAheadDis" value="1.0" />
     </include>
 
 
