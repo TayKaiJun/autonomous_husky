@@ -111,11 +111,25 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
 ### 24/07/23
 
 Testing set up:
-- Parameters set to default according to AEDE's source code, other than these changes (found in autonomous_husky_startup.launch):
-    ```
-    <arg name="maxSpeed" value="1.0" />
-    <arg name="autonomySpeed" value="1.0" />
-    <arg name="vehicleLength" value="0.99" />
-    <arg name="vehicleWidth" value="0.67" />
-    <arg name="lookAheadDis" value="1.0" />
-    ```
+- AEDE Local_planner:
+    - <arg name="maxSpeed" value="1.0" />
+    - <arg name="autonomySpeed" value="1.0" />
+    - <arg name="vehicleLength" value="1.0" />
+    - <arg name="vehicleWidth" value="0.70" />
+
+- TARE CONFIG: (Basing off sv_nuc_full_params)
+    - kLookAheadDistance : 8
+    - kKeyposeCloudDwzFilterLeafSize : 0.2
+    - kRushHomeDist : 5
+    - kFrontierClusterTolerance : 1.0
+    - kFrontierClusterMinSize : 10
+    - kUseCoverageBoundaryOnFrontier : false
+    - kSurfaceCloudDwzLeafSize : 0.3
+    - kCollisionCloudDwzLeafSize : 0.2
+    - keypose_graph/kAddNodeMinDist : 1.0
+    - keypose_graph/kAddNonKeyposeNodeMinDist : 0.5
+    - keypose_graph/kAddEdgeConnectDistThr : 3.0
+    - keypose_graph/kAddEdgeToLastKeyposeDistThr : 3.0
+    - keypose_graph/kAddEdgeVerticalThreshold : 1.0
+    - keypose_graph/kAddEdgeCollisionCheckResolution : 0.4
+    - keypose_graph/kAddEdgeCollisionCheckRadius : 0.4
