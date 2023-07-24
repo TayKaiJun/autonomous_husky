@@ -126,10 +126,12 @@ Testing set up:
     - kUseCoverageBoundaryOnFrontier : false
     - kSurfaceCloudDwzLeafSize : 0.3
     - kCollisionCloudDwzLeafSize : 0.2
-    - keypose_graph/kAddNodeMinDist : 1.0
-    - keypose_graph/kAddNonKeyposeNodeMinDist : 0.5
-    - keypose_graph/kAddEdgeConnectDistThr : 3.0
-    - keypose_graph/kAddEdgeToLastKeyposeDistThr : 3.0
-    - keypose_graph/kAddEdgeVerticalThreshold : 1.0
-    - keypose_graph/kAddEdgeCollisionCheckResolution : 0.4
-    - keypose_graph/kAddEdgeCollisionCheckRadius : 0.4
+    - the following keypose_graph values were attempted but causes TARE to crash
+        - keypose_graph/kAddNodeMinDist : 1.0
+        - keypose_graph/kAddNonKeyposeNodeMinDist : 0.5
+        - keypose_graph/kAddEdgeConnectDistThr : 3.0
+        - keypose_graph/kAddEdgeToLastKeyposeDistThr : 3.0
+        - keypose_graph/kAddEdgeVerticalThreshold : 1.0
+        - keypose_graph/kAddEdgeCollisionCheckResolution : 0.4
+        - keypose_graph/kAddEdgeCollisionCheckRadius : 0.4
+
