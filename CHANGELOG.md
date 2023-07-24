@@ -108,14 +108,14 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
 - changed blind radius to 0.8 -> blind radius of lidar is 0.8m due to hardware limitation. even with the lidar moved to the center of the robot, blind radius of lidar will already cover the husky
 - in fast-lio's preprocess.h, changed  `uint8_t` to `uint16_t` for ouster's point ring field to fix `Failed to match field 'ring'` message when running fastlio package
 
-## PARAMETERS
+### 24/07/23
 
-```
-aede local_planner.launch:
-    maxSpeed = 1.0
-    autonomySpeed = 1.0
-    sensorOffsetX = -0.15
-    vehicleLength = 0.99
-    vehicleWidth = 0.67
-    lookAheadDis = 1.0
-```
+Testing set up:
+- Parameters set to default according to AEDE's source code, other than these changes (found in autonomous_husky_startup.launch):
+    ```
+    <arg name="maxSpeed" value="1.0" />
+    <arg name="autonomySpeed" value="1.0" />
+    <arg name="vehicleLength" value="0.99" />
+    <arg name="vehicleWidth" value="0.67" />
+    <arg name="lookAheadDis" value="1.0" />
+    ```

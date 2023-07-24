@@ -1,3 +1,5 @@
 <launch>
-    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGA" args="-d $(find vehicle_simulator)/rviz/vehicle_simulator.rviz" respawn="false"/>
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGA" args="-d $(find vehicle_simulator)/rviz/husky_simulator.rviz" respawn="false">
+        <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find vehicle_simulator)/urdf/husky/husky.urdf.xacro'" />
+    </node>
 </launch>

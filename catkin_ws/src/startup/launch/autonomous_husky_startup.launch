@@ -29,7 +29,6 @@
         <arg name="rviz" value="false" />
         <arg name="maxSpeed" value="1.0" />
         <arg name="autonomySpeed" value="1.0" />
-        <arg name="sensorOffsetX" value="-0.15" />
         <arg name="vehicleLength" value="0.99" />
         <arg name="vehicleWidth" value="0.67" />
         <arg name="lookAheadDis" value="1.0" />
@@ -50,6 +49,7 @@
     <!-- TARE launcher -->
     <include file="$(find tare_planner)/launch/explore_husky.launch">
         <arg name="rviz" value="false" />
+        <arg name="boundary_name" value="carpark_boundary" />
     </include>
 
 </launch>
