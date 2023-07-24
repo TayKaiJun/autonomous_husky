@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find tare_planner)/launch/explore_husky.launch">
+        <arg name="rviz" value="false" />
+        <arg name="boundary_name" value="carpark_boundary_corner" />
+    </include>
+</launch>

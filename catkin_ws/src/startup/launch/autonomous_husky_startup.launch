@@ -27,11 +27,11 @@
     <!-- AEDE (system_real_robot) -->
     <include file="$(find vehicle_simulator)/launch/system_real_robot.launch">
         <arg name="rviz" value="false" />
-        <arg name="maxSpeed" value="1.0" />
+        <!-- <arg name="maxSpeed" value="1.0" />
         <arg name="autonomySpeed" value="1.0" />
         <arg name="vehicleLength" value="0.99" />
         <arg name="vehicleWidth" value="0.67" />
-        <arg name="lookAheadDis" value="1.0" />
+        <arg name="lookAheadDis" value="1.0" /> -->
     </include>
 
 
@@ -46,10 +46,10 @@
         <param name="outputTopic" type="string" value="/cmd_vel" />
     </node>
 
-    <!-- TARE launcher -->
+    <!-- TARE launcher 
     <include file="$(find tare_planner)/launch/explore_husky.launch">
         <arg name="rviz" value="false" />
         <arg name="boundary_name" value="carpark_boundary" />
-    </include>
+    </include> -->
 
 </launch>
