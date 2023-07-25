@@ -17,7 +17,7 @@
     <!-- <node pkg="topic_tools" name="relay_lidar" type="relay" args="/os1_node/lidar_packets /os_node/lidar_packets" />
     <node pkg="topic_tools" name="relay_imu" type="relay" args="/os1_node/imu_packets /os_node/imu_packets" /> -->
 
-    <node pkg="blind_filter" name="blind_filter" type="BlindingCuboid.py" output="screen" required="true"/>
+    <node pkg="startup" name="blind_filter" type="BlindingCuboid.py" output="screen" required="true"/>
     
     <!-- FAST_LIO -->
     <include file="$(find fast_lio)/launch/mapping_ouster64.launch">
