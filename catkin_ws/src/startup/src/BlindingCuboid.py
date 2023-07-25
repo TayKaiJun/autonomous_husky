@@ -22,9 +22,9 @@ fields = [
         PointField(name="intensity", offset=12, datatype=PointField.FLOAT32, count=1),
         PointField(name="t", offset=16, datatype=PointField.UINT32, count=1),
         PointField(name="reflectivity", offset=20, datatype=PointField.UINT16, count=1),
-        PointField(name="ring", offset=22, datatype=PointField.UINT8, count=1),
-        PointField(name="ambient", offset=23, datatype=PointField.UINT16, count=1),
-        PointField(name="range", offset=25, datatype=PointField.UINT32, count=1)
+        PointField(name="ring", offset=22, datatype=PointField.UINT16, count=1),
+        PointField(name="ambient", offset=24, datatype=PointField.UINT16, count=1),
+        PointField(name="range", offset=26, datatype=PointField.UINT32, count=1)
     ]
 
 def process_lidar_data(point_cloud):
