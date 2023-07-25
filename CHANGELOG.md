@@ -112,10 +112,12 @@ Comparing husky_nav/config/husky_control/teleop_logitech.yaml (on the NUC) & hus
 
 Testing set up:
 - AEDE Local_planner:
-    - <arg name="maxSpeed" value="1.0" />
-    - <arg name="autonomySpeed" value="1.0" />
-    - <arg name="vehicleLength" value="1.0" />
-    - <arg name="vehicleWidth" value="0.70" />
+    ```
+    <arg name="maxSpeed" value="1.0" />
+    <arg name="autonomySpeed" value="1.0" />
+    <arg name="vehicleLength" value="1.0" />
+    <arg name="vehicleWidth" value="0.70" />
+    ```
 
 - TARE CONFIG: (Basing off sv_nuc_full_params)
     - kLookAheadDistance : 8
@@ -135,3 +137,7 @@ Testing set up:
         - keypose_graph/kAddEdgeCollisionCheckResolution : 0.4
         - keypose_graph/kAddEdgeCollisionCheckRadius : 0.4
 
+### 25/07/23
+
+- Added visualization_tools to AEDE `system_real_robot.launch` so that trajectory and explored areas are logged and can be visualized in rviz
+- New branch `blind_cuboid_husky` created to test out Raynous's cuboid blind package
