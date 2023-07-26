@@ -141,3 +141,30 @@ Testing set up:
 
 - Added visualization_tools to AEDE `system_real_robot.launch` so that trajectory and explored areas are logged and can be visualized in rviz
 - New branch `blind_cuboid_husky` created to test out Raynous's cuboid blind package
+
+### 26/07/23
+
+- Tried more tare config params
+    - kExtendWayPointDistanceBig : 1.0
+    - kTerrainCollisionThreshold : 0.5
+    - kUseCoverageBoundaryOnFrontier : true
+    - rolling_occupancy_grid/resolution_x : 0.3
+    - rolling_occupancy_grid/resolution_y : 0.3
+    - rolling_occupancy_grid/resolution_z : 0.3
+    - viewpoint_manager/number_x : 50
+    - viewpoint_manager/number_y : 50
+    - viewpoint_manager/resolution_x : 0.6
+    - viewpoint_manager/resolution_y : 0.6
+    - kViewPointCollisionMargin : 0.5
+    - kViewPointCollisionMarginZPlus : 0.5
+    - kViewPointCollisionMarginZMinus : 0.5
+    - kCollisionGridResolutionX : 0.2
+    - kCollisionGridResolutionY : 0.2
+    - kLineOfSightStopAtNearestObstacle : false 
+    - kSensorRange : 7.5
+    - kNeighborRange : 3.0
+    - kCoverageOcclusionThr : 0.3
+    - kCoverageDilationRadius : 0.5
+    - kMinAddPointNumSmall : 40
+    - kMinAddPointNumBig : 60
+    - kMinAddFrontierPointNum : 20
