@@ -2,6 +2,9 @@
 
 <launch>
 
+    <arg name="useBoundary" doc="sets whether boundary is used" default="false"/>
+    <arg name="tareBoundary" doc="boundary file name" default="boundary"/>
+
     <!-- To start up Husky: control.launch and teleop.launch will be called by this base.launch -->
     <include file="$(find husky_base)/launch/base.launch" />
 
@@ -17,6 +20,7 @@
     <!-- <node pkg="topic_tools" name="relay_lidar" type="relay" args="/os1_node/lidar_packets /os_node/lidar_packets" />
     <node pkg="topic_tools" name="relay_imu" type="relay" args="/os1_node/imu_packets /os_node/imu_packets" /> -->
 
+    <node pkg="startup" name="blind_filter" type="BlindingCuboid.py" output="screen" required="true"/>
 
     <!-- FAST_LIO -->
     <include file="$(find fast_lio)/launch/mapping_ouster64.launch">
@@ -46,10 +50,11 @@
         <param name="outputTopic" type="string" value="/cmd_vel" />
     </node>
 
-    <!-- TARE launcher 
+    <!-- TARE launcher -->
     <include file="$(find tare_planner)/launch/explore_husky.launch">
         <arg name="rviz" value="false" />
-        <arg name="boundary_name" value="carpark_boundary" />
-    </include> -->
+        <arg name="use_boundary" value="$(arg useBoundary)" />
+        <arg name="boundary_name" value="$(arg tareBoundary)" />
+    </include>
 
 </launch>
