@@ -2,6 +2,9 @@
 
 <launch>
 
+    <arg name="useBoundary" doc="sets whether boundary is used"/>
+    <arg name="tareBoundary" doc="boundary file name"/>
+
     <!-- To start up Husky: control.launch and teleop.launch will be called by this base.launch -->
     <include file="$(find husky_base)/launch/base.launch" />
 
@@ -46,10 +49,11 @@
         <param name="outputTopic" type="string" value="/cmd_vel" />
     </node>
 
-    <!-- TARE launcher 
+    <!-- TARE launcher  -->
     <include file="$(find tare_planner)/launch/explore_husky.launch">
         <arg name="rviz" value="false" />
-        <arg name="boundary_name" value="carpark_boundary" />
-    </include> -->
+        <arg name="use_boundary" value="$(arg useBoundary)" />
+        <arg name="boundary_name" value="$(arg tareBoundary)" />
+    </include>
 
 </launch>
