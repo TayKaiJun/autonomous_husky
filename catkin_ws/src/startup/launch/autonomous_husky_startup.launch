@@ -2,8 +2,8 @@
 
 <launch>
 
-    <arg name="useBoundary" doc="sets whether boundary is used"/>
-    <arg name="tareBoundary" doc="boundary file name"/>
+    <arg name="useBoundary" doc="sets whether boundary is used" default="false"/>
+    <arg name="tareBoundary" doc="boundary file name" default="boundary"/>
 
     <!-- To start up Husky: control.launch and teleop.launch will be called by this base.launch -->
     <include file="$(find husky_base)/launch/base.launch" />
