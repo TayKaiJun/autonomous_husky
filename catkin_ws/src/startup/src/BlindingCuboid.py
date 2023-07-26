@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
     # Set up the filtered points publisher
     # filter_topic = '/os_cloud_node/points_filtered'
-    filtered = rospy.Publisher(filter_topic, PointCloud2, queue_size=1)
+    filtered = rospy.Publisher(filter_topic, PointCloud2)
 
     # Spin ROS node
     rospy.spin()
