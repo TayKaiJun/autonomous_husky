@@ -168,3 +168,12 @@ Testing set up:
     - kMinAddPointNumSmall : 40
     - kMinAddPointNumBig : 60
     - kMinAddFrontierPointNum : 20
+
+### 27/07/23
+
+- TARE config params resulted in a successful run albeit an attempt to run up a curb
+- Tried some AEDE config from DH's tuning too:
+    - autonomySpeed: 2.0
+    - obstacleHeightThre: 0.3
+    - minPathRange: 0.6
+    - pathRangeStep: 0.3
