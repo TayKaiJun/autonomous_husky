@@ -1,11 +1,12 @@
 <launch>
 
+  <arg name="rviz" default="true" />
   <arg name="cameraOffsetZ" default="0"/>
   <arg name="vehicleX" default="0"/>
   <arg name="vehicleY" default="0"/>
   <arg name="checkTerrainConn" default="false"/>
 
-  <include file="$(find ps3joy)/launch/ps3.launch" />
+  <!-- <include file="$(find ps3joy)/launch/ps3.launch" /> -->
 
   <include file="$(find local_planner)/launch/local_planner.launch" >
     <arg name="cameraOffsetZ" value="$(arg cameraOffsetZ)"/>
@@ -23,6 +24,8 @@
 
   <include file="$(find loam_interface)/launch/loam_interface.launch" />
 
-  <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGA" args="-d $(find vehicle_simulator)/rviz/vehicle_simulator.rviz" respawn="true"/>
+  <group if="$(arg rviz)">
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGA" args="-d $(find vehicle_simulator)/rviz/vehicle_simulator.rviz" respawn="true"/>
+  </group>
 
 </launch>

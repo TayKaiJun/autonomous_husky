@@ -223,7 +223,7 @@ int main(int argc, char** argv)
 
   ros::Subscriber subStop = nh.subscribe<std_msgs::Int8> ("/stop", 5, stopHandler);
 
-  ros::Publisher pubSpeed = nh.advertise<geometry_msgs::TwistStamped> ("/cmd_vel", 5);
+  ros::Publisher pubSpeed = nh.advertise<geometry_msgs::TwistStamped> ("/aede/cmd_vel", 5);
   geometry_msgs::TwistStamped cmd_vel;
   cmd_vel.header.frame_id = "vehicle";
 

@@ -331,7 +331,7 @@ int main(int argc, char** argv)
 
   ros::Subscriber subTerrainCloud = nh.subscribe<sensor_msgs::PointCloud2>("/terrain_map", 2, terrainCloudHandler);
 
-  ros::Subscriber subSpeed = nh.subscribe<geometry_msgs::TwistStamped>("/cmd_vel", 5, speedHandler);
+  ros::Subscriber subSpeed = nh.subscribe<geometry_msgs::TwistStamped>("/aede/cmd_vel", 5, speedHandler);
 
   ros::Publisher pubVehicleOdom = nh.advertise<nav_msgs::Odometry>("/state_estimation", 5);
 
