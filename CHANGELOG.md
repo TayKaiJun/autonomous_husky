@@ -258,3 +258,7 @@ Testing set up:
     - obstacleHeightThre: 0.3
     - minPathRange: 0.6
     - pathRangeStep: 0.3
+
+### 28/07/23
+- Test results from modified AEDE config: Husky did not finish exploration, ran twice and only explored half the area both times.
+- Changing back AEDE params to commit `310436a` but keeping `obstacleHeightThre` to 0.3
