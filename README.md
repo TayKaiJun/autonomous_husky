@@ -7,9 +7,6 @@ This document is for recording the actions done to integrate all the required sy
 1.1 Husky
 =========
 
-1.1 Husky
-=========
-
 Source code: https://github.com/husky/husky/tree/noetic-devel
 
 ## Brief explanation of packages
@@ -27,10 +24,7 @@ Source code: https://github.com/husky/husky/tree/noetic-devel
 
 
 1.2 Ouster
-======================
-
-1.2 Ouster
-======================
+=====================
 
 ### Installations:
 
@@ -59,8 +53,6 @@ catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release
 - to see the topics being published, open another terminal, source the same bash file then run `rostopic list`
 
 
-1.3 Fast-LIO2.0
-===============
 1.3 Fast-LIO2.0
 ===============
 
@@ -111,17 +103,34 @@ Clone source code:
 ```
 git clone https://github.com/HongbiaoZ/autonomous_exploration_development_environment.git
 git checkout distribution
-catkin_make
 ```
-Change topic names in loam_interface.launch to match the topic names published by the Husky's Odometry data and Fast-LIO's PointCloud data:
-- remapped `/odometry/filtered` to `/state_estimation` in `FAST_LIO/launch/mapping_ouster64.launch`
-- remapped `/cloud_registered` to `/registered_scan` in `husky_control/launch/control.launch`
+Change topic names in loam_interface.launch to match the topic names published by the LiDAR's Odometry data and Fast-LIO's PointCloud data:
+- set `stateEstimationTopic` to `/Odometry`
+- set `registeredScanTopic` to `/cloud_registered`
 
 ### Running
 When running on the Husky
 ```
 source devel/setup.sh
 roslaunch vehicle_simulator system_real_robot.launch
+```
+
+1.5 TARE Planner
+=========================================================
+
+Clone source code: 
+```
+git clone https://github.com/caochao39/tare_planner.git
+```
+Change topic names in loam_interface.launch to match the topic names published by the LiDAR's Odometry data and Fast-LIO's PointCloud data:
+- set `stateEstimationTopic` to `/Odometry`
+- set `registeredScanTopic` to `/cloud_registered`
+
+### Running
+When running on the Husky
+```
+source devel/setup.sh
+roslaunch tare_planner explore_husky.launch
 ```
 
 2 Integrated Launcher
@@ -171,11 +180,16 @@ roslaunch vehicle_simulator system_real_robot.launch
         roslaunch startup autonomous_husky_startup.launch
         ```
         All the nodes needed should be launched
+        - If TARE boundary is to be used, add argument `useBoundary:=true`
+        - If a specific boundary is to be used for TARE, add argument `tareBoundary:=<BOUNDARY_FILE_NAME>`
+          ```
+          # Example
+          roslaunch startup autonomous_husky_startup.launch useBoundary:=true tareBoundary:=<BOUNDARY_FILE_NAME>
+          ```
         
         > Note that either the e_stop should be activated or the bumper of the controller should be held on to otherwise robot will start moving automatically.
     - In the main PC:
         ```
-        roslaunch startup visualize_aede.launch
-        roslaunch startup visualize_tare.launch
+        roslaunch startup visualize.launch
         ```
 > Note: Since `/cmd_vel` has a lower priority than the `joy_teleop/cmd_vel` input from the controller, simply pressing the left bumper on the controller when AEDE is manoeuvring the robot will override the AEDE's control
