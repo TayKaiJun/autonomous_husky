@@ -4,7 +4,7 @@ sub_terrain_map_topic_ : /terrain_map
 sub_terrain_map_ext_topic_ : /terrain_map_ext
 sub_state_estimation_topic_ : /state_estimation_at_scan
 sub_registered_scan_topic_ : /registered_scan
-sub_coverage_boundary_topic_ : /navigation_boundary
+sub_coverage_boundary_topic_ : /sensor_coverage_planner/coverage_boundary
 sub_viewpoint_boundary_topic_ : /navigation_boundary
 sub_nogo_boundary_topic_ : /sensor_coverage_planner/nogo_boundary
 pub_exploration_finish_topic_ : exploration_finish
@@ -20,8 +20,8 @@ kCheckTerrainCollision : true
 kExtendWayPoint : true
 kUseLineOfSightLookAheadPoint : true
 kNoExplorationReturnHome : true
-kExtendWayPointDistanceBig : 1.0
-kExtendWayPointDistanceSmall : 1.0
+kExtendWayPointDistanceBig : 8.0
+kExtendWayPointDistanceSmall : 3.5
 kKeyposeCloudDwzFilterLeafSize : 0.2
 kRushHomeDist : 5
 kAtHomeDistThreshold : 0.5
@@ -36,7 +36,7 @@ kDirectionNoChangeCounterThr : 5
 kUseFrontier : true
 kFrontierClusterTolerance : 1.0
 kFrontierClusterMinSize : 10
-kUseCoverageBoundaryOnFrontier : true
+kUseCoverageBoundaryOnFrontier : false 
 kUseCoverageBoundaryOnObjectSurface : false
 
 # Rolling occupancy grid
@@ -84,7 +84,7 @@ kCollisionGridResolutionX : 0.2
 kCollisionGridResolutionY : 0.2
 kCollisionGridResolutionZ : 0.0
 kCollisionPointThr : 1
-kLineOfSightStopAtNearestObstacle : false 
+kLineOfSightStopAtNearestObstacle : false
 kViewPointHeightFromTerrain : 0.75
 kViewPointHeightFromTerrainChangeThreshold : 0.6
 kCheckDynamicObstacleCollision : false
@@ -121,18 +121,5 @@ kLocalPlanningHorizonMarkerColorR : 0.0
 kLocalPlanningHorizonMarkerColorG : 1.0
 kLocalPlanningHorizonMarkerColorB : 0.0
 kLocalPlanningHorizonMarkerColorA : 1.0
-kLocalPlanningHorizonMarkerWidth : 0.15
-kLocalPlanningHorizonHeight : 3.0
-# Visualization
-kExploringSubspaceMarkerColorGradientAlpha : true
-kExploringSubspaceMarkerColorMaxAlpha : 0.8
-kExploringSubspaceMarkerColorR : 0.0
-kExploringSubspaceMarkerColorG : 1.0
-kExploringSubspaceMarkerColorB : 0.0
-kExploringSubspaceMarkerColorA : 1.0
-kLocalPlanningHorizonMarkerColorR : 0.0
-kLocalPlanningHorizonMarkerColorG : 1.0
-kLocalPlanningHorizonMarkerColorB : 0.0
-kLocalPlanningHorizonMarkerColorA : 1.0
-kLocalPlanningHorizonMarkerWidth : 0.15
+kLocalPlanningHorizonMarkerWidth : 0.3
 kLocalPlanningHorizonHeight : 3.0

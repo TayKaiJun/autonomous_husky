@@ -4,7 +4,7 @@ sub_terrain_map_topic_ : /terrain_map
 sub_terrain_map_ext_topic_ : /terrain_map_ext
 sub_state_estimation_topic_ : /state_estimation_at_scan
 sub_registered_scan_topic_ : /registered_scan
-sub_coverage_boundary_topic_ : /navigation_boundary
+sub_coverage_boundary_topic_ : /sensor_coverage_planner/coverage_boundary
 sub_viewpoint_boundary_topic_ : /navigation_boundary
 sub_nogo_boundary_topic_ : /sensor_coverage_planner/nogo_boundary
 pub_exploration_finish_topic_ : exploration_finish
@@ -15,15 +15,15 @@ pub_momentum_activation_count_topic_ : momentum_activation_count
 
 kAutoStart : true
 kRushHome : true
-kUseTerrainHeight : false
+kUseTerrainHeight : true
 kCheckTerrainCollision : true
 kExtendWayPoint : true
 kUseLineOfSightLookAheadPoint : true
 kNoExplorationReturnHome : true
-kExtendWayPointDistanceBig : 1.0
-kExtendWayPointDistanceSmall : 1.0
+kExtendWayPointDistanceBig : 8.0
+kExtendWayPointDistanceSmall : 4.5
 kKeyposeCloudDwzFilterLeafSize : 0.2
-kRushHomeDist : 5
+kRushHomeDist : 10
 kAtHomeDistThreshold : 0.5
 kTerrainCollisionThreshold : 0.5
 kLookAheadDistance : 8
@@ -35,8 +35,8 @@ kDirectionNoChangeCounterThr : 5
 # PlanningEnv
 kUseFrontier : true
 kFrontierClusterTolerance : 1.0
-kFrontierClusterMinSize : 10
-kUseCoverageBoundaryOnFrontier : true
+kFrontierClusterMinSize : 30
+kUseCoverageBoundaryOnFrontier : false 
 kUseCoverageBoundaryOnObjectSurface : false
 
 # Rolling occupancy grid
@@ -44,7 +44,7 @@ rolling_occupancy_grid/resolution_x : 0.3
 rolling_occupancy_grid/resolution_y : 0.3
 rolling_occupancy_grid/resolution_z : 0.3
 
-kSurfaceCloudDwzLeafSize : 0.3
+kSurfaceCloudDwzLeafSize : 0.5
 kCollisionCloudDwzLeafSize : 0.2
 kKeyposeCloudStackNum : 5
 kPointCloudRowNum : 50
@@ -67,16 +67,16 @@ keypose_graph/kAddEdgeCollisionCheckRadius : 0.4
 keypose_graph/kAddEdgeCollisionCheckPointNumThr : 1
 
 # ViewPointManager
-viewpoint_manager/number_x : 50
-viewpoint_manager/number_y : 50
+viewpoint_manager/number_x : 40
+viewpoint_manager/number_y : 40
 viewpoint_manager/number_z : 1
-viewpoint_manager/resolution_x : 0.6
-viewpoint_manager/resolution_y : 0.6
+viewpoint_manager/resolution_x : 1.2
+viewpoint_manager/resolution_y : 1.2
 viewpoint_manager/resolution_z : 0.0
 kConnectivityHeightDiffThr : 0.25
 kGreedyViewPointSampleRange : 3
 kLocalPathOptimizationItrMax : 10
-kViewPointCollisionMargin : 0.5
+kViewPointCollisionMargin : 0.7
 kViewPointCollisionMarginZPlus : 0.5
 kViewPointCollisionMarginZMinus : 0.5
 kCollisionGridZScale : 1.0
@@ -84,16 +84,16 @@ kCollisionGridResolutionX : 0.2
 kCollisionGridResolutionY : 0.2
 kCollisionGridResolutionZ : 0.0
 kCollisionPointThr : 1
-kLineOfSightStopAtNearestObstacle : false 
+kLineOfSightStopAtNearestObstacle : true
 kViewPointHeightFromTerrain : 0.75
 kViewPointHeightFromTerrainChangeThreshold : 0.6
 kCheckDynamicObstacleCollision : false
 kCollisionFrameCountMax : 3
 
-kSensorRange : 7.5
+kSensorRange : 12.0
 kNeighborRange : 3.0
 kCoverageOcclusionThr : 0.3
-kCoverageDilationRadius : 0.5
+kCoverageDilationRadius : 1.0
 
 # Grid World
 kGridWorldXNum : 121
@@ -103,7 +103,7 @@ kGridWorldCellHeight : 3.0
 kGridWorldNearbyGridNum : 5
 kMinAddPointNumSmall : 40
 kMinAddPointNumBig : 60
-kMinAddFrontierPointNum : 20
+kMinAddFrontierPointNum : 15
 kCellExploringToCoveredThr : 1
 kCellCoveredToExploringThr: 10
 kCellExploringToAlmostCoveredThr: 10
@@ -121,18 +121,5 @@ kLocalPlanningHorizonMarkerColorR : 0.0
 kLocalPlanningHorizonMarkerColorG : 1.0
 kLocalPlanningHorizonMarkerColorB : 0.0
 kLocalPlanningHorizonMarkerColorA : 1.0
-kLocalPlanningHorizonMarkerWidth : 0.15
-kLocalPlanningHorizonHeight : 3.0
-# Visualization
-kExploringSubspaceMarkerColorGradientAlpha : true
-kExploringSubspaceMarkerColorMaxAlpha : 0.8
-kExploringSubspaceMarkerColorR : 0.0
-kExploringSubspaceMarkerColorG : 1.0
-kExploringSubspaceMarkerColorB : 0.0
-kExploringSubspaceMarkerColorA : 1.0
-kLocalPlanningHorizonMarkerColorR : 0.0
-kLocalPlanningHorizonMarkerColorG : 1.0
-kLocalPlanningHorizonMarkerColorB : 0.0
-kLocalPlanningHorizonMarkerColorA : 1.0
-kLocalPlanningHorizonMarkerWidth : 0.15
+kLocalPlanningHorizonMarkerWidth : 0.3
 kLocalPlanningHorizonHeight : 3.0

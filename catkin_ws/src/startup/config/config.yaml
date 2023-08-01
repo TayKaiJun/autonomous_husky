@@ -1,0 +1,6 @@
+common: 
+  rviz: false
+
+os_node:
+  viz: false
+  sensor_hostname: os1-122011000244.local
