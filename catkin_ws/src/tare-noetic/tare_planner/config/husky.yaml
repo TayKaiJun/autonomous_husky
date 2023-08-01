@@ -123,3 +123,16 @@ kLocalPlanningHorizonMarkerColorB : 0.0
 kLocalPlanningHorizonMarkerColorA : 1.0
 kLocalPlanningHorizonMarkerWidth : 0.15
 kLocalPlanningHorizonHeight : 3.0
+# Visualization
+kExploringSubspaceMarkerColorGradientAlpha : true
+kExploringSubspaceMarkerColorMaxAlpha : 0.8
+kExploringSubspaceMarkerColorR : 0.0
+kExploringSubspaceMarkerColorG : 1.0
+kExploringSubspaceMarkerColorB : 0.0
+kExploringSubspaceMarkerColorA : 1.0
+kLocalPlanningHorizonMarkerColorR : 0.0
+kLocalPlanningHorizonMarkerColorG : 1.0
+kLocalPlanningHorizonMarkerColorB : 0.0
+kLocalPlanningHorizonMarkerColorA : 1.0
+kLocalPlanningHorizonMarkerWidth : 0.15
+kLocalPlanningHorizonHeight : 3.0

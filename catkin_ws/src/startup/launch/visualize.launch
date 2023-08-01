@@ -1,4 +1,4 @@
 <launch>
-    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGA" args="-d $(find vehicle_simulator)/rviz/husky_simulator.rviz" respawn="false"/>
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rvizGA" args="-d $(find vehicle_simulator)/rviz/vehicle_simulator.rviz" respawn="false"/>
     <node launch-prefix="nice" pkg="rviz" type="rviz" name="tare_planner_ground_rviz" args="-d $(find tare_planner)/rviz/tare_planner_ground.rviz" respawn="false"/>
 </launch>

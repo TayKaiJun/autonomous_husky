@@ -7,6 +7,9 @@ This document is for recording the actions done to integrate all the required sy
 1.1 Husky
 =========
 
+1.1 Husky
+=========
+
 Source code: https://github.com/husky/husky/tree/noetic-devel
 
 ## Brief explanation of packages
@@ -22,6 +25,9 @@ Source code: https://github.com/husky/husky/tree/noetic-devel
 
 *Bolded packages are the important ones used for operating the robot (TBV)*
 
+
+1.2 Ouster
+======================
 
 1.2 Ouster
 ======================
@@ -55,10 +61,13 @@ catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 1.3 Fast-LIO2.0
 ===============
+1.3 Fast-LIO2.0
+===============
 
 ### Installations:
 
 1.  `sudo apt install libpcl-dev` (this is for Point Cloud Library)
+2.  `sudo apt install libeigen3-dev`
 2.  `sudo apt install libeigen3-dev`
     - Alternatively, download tar.gz file from [Eigen source](https://eigen.tuxfamily.org/index.php?title=Main_Page) 
     - Untar using `tar -xzf <tarfile name>`
